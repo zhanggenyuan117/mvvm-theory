@@ -11,7 +11,6 @@ class Observer {
     constructor(value) {
         //声明
         this.value = value;
-        // def(value,'__ob__',this);
         //判断如果是数组的话  返回  因为data是一个对象  数组暂时不进行操作
         if (Array.isArray(value)) {
             return
