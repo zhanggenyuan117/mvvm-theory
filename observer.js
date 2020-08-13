@@ -2,7 +2,8 @@
 /*
 *   author:zhanggenyuan
 *   data:2020-08
-*   转发请注明出处
+*   本文参考  vue源码系列 - vue中文社区
+*   点个star
 */
 
 /*************  Observer类使数据变得可观测  ****************/
@@ -41,7 +42,7 @@ class Observer {
             //将每一个属性转换成 getter / setter 来监测数据的变化
             get() {
                 console.log(`${key}属性被读取了`)
-                // Dep.depend(); //收集依赖
+                dep.depend(); //收集依赖
                 return val
             },
             set(newVal) {
@@ -50,7 +51,7 @@ class Observer {
                 }
                 console.log(`${key}属性被改写了`)
                 val = newVal;
-                // Dep.notify();  //通知更新
+                dep.notify();  //通知更新
             }
         })
     }
@@ -117,7 +118,6 @@ class Watcher {
     }
 }
 
-//定义正则表达式  匹配花括号语法
 const bailRE = /[^\w.$]/
 function parsePath(path) {
     if (bailRE.test(path)) {

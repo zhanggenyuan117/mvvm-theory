@@ -8,15 +8,19 @@
 </head>
 
 <body>
-    {{data.name}}
+    <div id="app">
+        {{name}}
+    </div>
     <script src="./observer.js"></script>
+
     <script>
         var data = {
             name: '张三',
+            age: 18,
             sex: '男'
         }
-        var obj1 = new Observer(data)
-
+        var observer = new Observer(data);
+        var dep = new Dep();
     </script>
 </body>
 
